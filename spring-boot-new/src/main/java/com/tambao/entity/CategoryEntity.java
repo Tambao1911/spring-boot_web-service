@@ -1,7 +1,11 @@
 package com.tambao.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +17,9 @@ public class CategoryEntity extends BaseEntity{
 	@Column(name = "code")
 	private String code;
 
+	@OneToMany(mappedBy = "category")
+	private List<NewEntity> news = new ArrayList<NewEntity>();
+	
 	public String getName() {
 		return name;
 	}
@@ -29,4 +36,11 @@ public class CategoryEntity extends BaseEntity{
 		this.code = code;
 	}
 
+	public List<NewEntity> getNews() {
+		return news;
+	}
+
+	public void setNews(List<NewEntity> news) {
+		this.news = news;
+	}
 }
