@@ -38,6 +38,13 @@ public class NewService implements INewService {
 		return newConverter.toDTO(newEntity);
 	}
 
+	@Override
+	public void delete(long[] ids) {
+		for (long item : ids) {
+			newRepository.delete(item);
+		}
+	}
+
 //	@Override
 //	public NewDTO update(NewDTO newDTO) {
 //		NewEntity oldNewEntity = newRepository.findOne(newDTO.getId());
