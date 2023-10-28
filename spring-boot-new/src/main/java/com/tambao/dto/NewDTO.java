@@ -1,6 +1,6 @@
 package com.tambao.dto;
 
-public class NewDTO {
+public class NewDTO extends AbstractDTO<NewDTO> {
 	private String title;
 	private String content;
 	private String thumbnail;
@@ -46,5 +46,5 @@ public class NewDTO {
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;
 	}
-	
+
 }
