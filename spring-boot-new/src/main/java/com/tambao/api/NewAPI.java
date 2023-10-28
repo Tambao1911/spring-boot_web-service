@@ -25,12 +25,33 @@ public class NewAPI {
 	private INewService newService;
 
 	@GetMapping(value = "/new")
-	public NewOutput showNew(@RequestParam("page") int page, @RequestParam("limit") int limit) {
+	public NewOutput showNew(@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "limit", required = false) Integer limit) {
 		NewOutput result = new NewOutput();
-		result.setPage(page);
-		Pageable pageable = new PageRequest(page - 1, limit);
-		result.setListResult(newService.findAll(pageable));
-		result.setTotalPage((int) Math.ceil((double) (newService.totalItem()) / limit));
+		// Sử dụng required
+		if (page != null & limit != null) {
+			result.setPage(page);
+			Pageable pageable = new PageRequest(page - 1, limit);
+			result.setListResult(newService.findAll(pageable));
+			result.setTotalPage((int) Math.ceil((double) (newService.totalItem()) / limit));
+		} else {
+			result.setListResult(newService.findAll());
+		}
+
+		// sử dụng defaultValue
+		
+		// Phải dùng chuỗi
+		// -> defaultValue = "NONE"
+//		if(!page.equals("NONE") && !limit.equals("NONE")) {
+//			int pageParse = Integer.parseInt(page);
+//			int limitParse = Integer.parseInt(limit);
+//			result.setPage(pageParse);
+//			Pageable pageable = new PageRequest(pageParse - 1, limitParse);
+//			result.setListResult(newService.findAll(pageable));
+//			result.setTotalPage((int) Math.ceil((double) (newService.totalItem()) / limitParse));
+//		}else {
+//			result.setListResult(newService.findAll());
+//		}
 		return result;
 	}
 

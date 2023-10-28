@@ -11,5 +11,6 @@ public interface INewService {
 	//NewDTO update(NewDTO newDTO);
 	void delete(long[] ids);
 	List<NewDTO> findAll(Pageable pageable);
+	List<NewDTO> findAll();
 	int totalItem();
 }
