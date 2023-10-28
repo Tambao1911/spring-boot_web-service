@@ -26,6 +26,10 @@ public class NewConverter {
 		dto.setContent(entity.getContent());
 		dto.setThumbnail(entity.getThumbnail());
 		dto.setShortDescription(entity.getShortDescription());
+		dto.setCreatedDate(entity.getCreatedDate());
+		dto.setCreatedBy(entity.getCreatedBy());
+		dto.setModifiedDate(entity.getModifiedDate());
+		dto.setModifiedBy(entity.getModifiedBy());
 		return dto;
 	}
 	
